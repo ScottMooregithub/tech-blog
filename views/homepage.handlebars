@@ -1,16 +1,11 @@
-{{#if loggedIn}}
-<h2>Big Wigs Tech Blog </h2>
-  {{else}}
-  <h2>Login in and post your blog</h2>
-  {{/if}}
-  
-<ol class="post-list">
+<h2>Make a Post, leave a comment... have fun!</h2>
+<ol class="review-list">
 
-    {{#each posts as |post|}}
+    {{#each reviews as |review|}}
 
         <li>
 
-            {{> slice post loggedIn = ../loggedIn }}
+            {{> slice review loggedIn = ../loggedIn }}
 
         </li>
     {{/each}}

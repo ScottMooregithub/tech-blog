@@ -1,0 +1,33 @@
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h4>
+    Edit Review
+  </h4>
+  <form class="edit-review-form">
+    <div>
+      <input name="review-title" type="text" value="{{review.title}}" /><br />
+      <span>({{format_url review.review_text}})</span>
+    </div>
+    <div>
+      {{review.vote_count}}
+      {{format_plural "point" review.vote_count}}
+      by you on
+      {{format_date review.created_at}}
+      |
+      <a href="/review/{{review.id}}">{{review.comments.length}}
+        {{format_plural "comment" review.comments.length}}</a>
+    </div>
+    <button type="submit">Save Review</button>
+    <button type="button" class="delete-review-btn">Delete Review</button>
+  </form>
+</article>
+
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+  </div>
+</form>

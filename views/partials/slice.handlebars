@@ -1,15 +1,14 @@
-<article class="post article_style">
-  <a href="/post/{{id}}">
-    <img class="article_img" src="/image/post1.png" />
+<article class="review article_style">
+  <a href="/review/{{id}}">
     <div class="title">
       <h1>{{title}}</h1>
       {{#if edit}}
-        <a href="/dashboard/edit/{{id}}" class="edit-link">Edit Post</a>
+        <a href="/dashboard/edit/{{id}}" class="edit-link">Edit Review</a>
       {{/if}}
       <h5>{{user.username}}</h5>
 
       {{#if loggedIn}}
-        <p>{{slice post_text}}</p>
+        <p>{{slice review_text}}</p>
       {{/if}}
 
     </div>
@@ -23,7 +22,7 @@
       on
       {{format_date created_at}}
       |
-      <a href="/post/{{id}}">{{comments.length}}
+      <a href="/review/{{id}}">{{comments.length}}
         {{format_plural "comment" comments.length}}</a>
     {{/if}}
   </div>

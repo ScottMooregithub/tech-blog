@@ -1,31 +1,31 @@
 // import all models
-const post = require("./Post");
+const Review = require("./Review");
 const User = require("./User");
 const Vote = require("./Vote");
 const Comment = require("./Comment");
 
 // create associations
-User.hasMany(post, {
+User.hasMany(Review, {
   foreignKey: "user_id",
 });
 
-post.belongsTo(User, {
-  foreignKey: "user_id",
-  onDelete: "SET NULL",
-});
-
-User.belongsToMany(post, {
-  through: Vote,
-  as: "voted_posts",
-
+Review.belongsTo(User, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
 });
 
-post.belongsToMany(User, {
+User.belongsToMany(Review, {
   through: Vote,
-  as: "voted_posts",
-  foreignKey: "post_id",
+  as: "voted_reviews",
+
+  foreignKey: "user_id",
+  onDelete: "SET NULL",
+});
+
+Review.belongsToMany(User, {
+  through: Vote,
+  as: "voted_reviews",
+  foreignKey: "review_id",
   onDelete: "SET NULL",
 });
 
@@ -34,8 +34,8 @@ Vote.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
-Vote.belongsTo(post, {
-  foreignKey: "post_id",
+Vote.belongsTo(Review, {
+  foreignKey: "review_id",
   onDelete: "SET NULL",
 });
 
@@ -43,8 +43,8 @@ User.hasMany(Vote, {
   foreignKey: "user_id",
 });
 
-post.hasMany(Vote, {
-  foreignKey: "post_id",
+Review.hasMany(Vote, {
+  foreignKey: "review_id",
 });
 
 Comment.belongsTo(User, {
@@ -52,8 +52,8 @@ Comment.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
-Comment.belongsTo(post, {
-  foreignKey: "post_id",
+Comment.belongsTo(Review, {
+  foreignKey: "review_id",
   onDelete: "SET NULL",
 });
 
@@ -62,8 +62,8 @@ User.hasMany(Comment, {
   onDelete: "SET NULL",
 });
 
-post.hasMany(Comment, {
-  foreignKey: "post_id",
+Review.hasMany(Comment, {
+  foreignKey: "review_id",
 });
 
-module.exports = { User, post, Vote, Comment };
+module.exports = { User, Review, Vote, Comment };

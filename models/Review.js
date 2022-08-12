@@ -1,25 +1,24 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-// create our post model
-class post extends Model {
+// create our Review model
+class Review extends Model {
   static upvote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
-      post_id: body.post_id,
+      review_id: body.review_id,
     }).then(() => {
-      return post.findOne({
+      return Review.findOne({
         where: {
-          id: body.post_id,
+          id: body.review_id,
         },
         attributes: [
           "id",
-          "post_text",
-          "post_img",
+          "review_text",
           "title",
           "created_at",
           [
             sequelize.literal(
-              "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+              "(SELECT COUNT(*) FROM vote WHERE review.id = vote.review_id)"
             ),
             "vote_count",
           ],
@@ -30,7 +29,7 @@ class post extends Model {
             attributes: [
               "id",
               "comment_text",
-              "post_id",
+              "review_id",
               "user_id",
               "created_at",
             ],
@@ -45,8 +44,8 @@ class post extends Model {
   }
 }
 
-// create fields/columns for post model
-post.init(
+// create fields/columns for Review model
+Review.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -58,17 +57,10 @@ post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    post_text: {
+    review_text: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-
-    post_img: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -81,8 +73,8 @@ post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "post",
+    modelName: "review",
   }
 );
 
-module.exports = post;
+module.exports = Review;

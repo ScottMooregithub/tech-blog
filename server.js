@@ -51,3 +51,4 @@ app.use(
   "/js",
   express.static(path.join(__dirname, "node_modules/jquery/dist"))
 );
+app.use("/favicon.ico", express.static("image/favicon.ico"));

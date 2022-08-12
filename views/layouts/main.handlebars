@@ -3,38 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mighty Tech Blog</title>
+    <title>Travel Story</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+
   </head>
 
   <body>
     <div class="wrapper">
-      <div class="color">
-        <header>
-          <div class="main_img">
-            <a href="/">
-              <img src="/image/pug.png" class="size_image" />
-            </a>
-            <h2>Big Wigs tech blog</h2>
-          </div>
-          <nav>
-            <a href="/" class="btn-no-style">Home</a>
-
-            {{#if loggedIn}}
-              <a href="/dashboard" class="btn-no-style">New Post / Edit Post</a>
-              <button id="logout" class="btn-no-style">Logout</button>
-            {{else}}
-              <a class="btn-no-style" href="/login">Login</a>
-            {{/if}}
-          </nav>
-        </header>
-      </div>
-
-      <label>
-        <input type="checkbox" />
-        <span class="menu"> <span class="hamburger"></span> </span>
-        <ul>
+      <header>
+        <div class="main_img">
+          <img src="/image/nerd2.png" class="size_image" />
+        </div>
+        <nav>
           <a href="/" class="btn-no-style">Home</a>
+          {{! <a href="/dashboard" class="btn-no-style">About</a> }}
 
           {{#if loggedIn}}
             <a href="/dashboard" class="btn-no-style">New Post / Edit Post</a>
@@ -42,14 +24,13 @@
           {{else}}
             <a class="btn-no-style" href="/login">Login</a>
           {{/if}}
-        </ul>
-      </label>
-
+        </nav>
+      </header>
       <main>
         {{{body}}}
       </main>
       <footer>
-        <h3>Designed with big wigs in mind!</h3>
+        <h3>© 2022 Scotts Tech Blog </h3>
       </footer>
     </div>
 

@@ -1,8 +1,10 @@
 const router = require("express").Router();
-const { User, post, Comment, Vote } = require("../../models");
+const { User, Review, Comment, Vote } = require("../../models");
 
 // Get /api/users
 router.get("/", (req, res) => {
+  // Access the User model and run .findAll()method)
+  // .findAll is the SQl equivalent to SELECT * FROM users;
   User.findAll({
     attributes: { exclude: ["password"] },
   })
@@ -15,6 +17,7 @@ router.get("/", (req, res) => {
 
 //Get /api/users/1
 router.get("/:id", (req, res) => {
+  // Access the User model and run the .findOne()method)
   User.findOne({
     attributes: { exclude: ["password"] },
     where: {
@@ -22,22 +25,22 @@ router.get("/:id", (req, res) => {
     },
     include: [
       {
-        model: post,
-        attributes: ["id", "title", "post_text", "created_at"],
+        model: Review,
+        attributes: ["id", "title", "review_text", "created_at"],
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "created_at"],
         include: {
-          model: post,
+          model: Review,
           attributes: ["title"],
         },
       },
       {
-        model: post,
+        model: Review,
         attributes: ["title"],
         through: Vote,
-        as: "voted_posts",
+        as: "voted_reviews",
       },
     ],
   })
@@ -56,8 +59,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// post /api/users
+// Review /api/users
 router.post("/", (req, res) => {
+  // Access the User model and run the .Create()method)
+  // this method creates a User
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -79,6 +84,7 @@ router.post("/", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
+  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
       email: req.body.email,
@@ -123,6 +129,10 @@ router.post("/logout", (req, res) => {
 
 //Put /api/users/1
 router.put("/:id", (req, res) => {
+  // Access the User model and run the .Update()method)
+  // this method combines the parameters to crete and look up data
+  // pass in req.body to provide new data
+  // use where;{ req.params.id} to indicate where new data is to be used
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -144,6 +154,8 @@ router.put("/:id", (req, res) => {
 
 // DELETE /api/users/1
 router.delete("/:id", (req, res) => {
+  // Access the User model and run the .Destroy()method)
+  // Provide location of data that is to be destroyed with where: {req.params.id}
   User.destroy({
     where: {
       id: req.params.id,

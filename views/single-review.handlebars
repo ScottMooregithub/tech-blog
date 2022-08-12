@@ -1,4 +1,4 @@
-{{> post-info post loggedIn = loggedIn}}
+{{> review-info review loggedIn = loggedIn}}
 <style>
 .article_style{
   width: 100%;
@@ -11,15 +11,16 @@
   </div>
 
   <div>
-    <button type="submit">comment</button>
+    <button type="submit">Leave a comment</button>
     {{!-- <button type="button" class="upvote-btn">Like</button> --}}
   </div>
 </form>
 {{/if}}
 
-{{> comments post.comments}}
+{{> comments review.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script>
+{{/if}}c="/javascript/upvote.js"></script>
 {{/if}}
