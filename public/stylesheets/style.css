@@ -8,7 +8,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: #fff7f7;
+  background-color: white;
   color: black;
 }
 
@@ -24,8 +24,8 @@ a:hover {
 }
 
 button {
-  background-color: #49e2ff;
-  border: 0;
+  background-color: white;
+  border: 1px solid black;
   padding: 1em 3em;
   color: black;
   font-weight: bold;
@@ -36,7 +36,7 @@ button {
 }
 
 button:hover {
-  background-color: #56e4ff;
+  background-color: green;
 }
 
 .review-list {
@@ -52,14 +52,15 @@ input {
   height: 46px;
   color: #000;
   font-weight: 600;
-  background-color: #34e9e947;
+  background-color: lightgray;
+  border-color: 1px solid black;
   border: 0;
 }
 
 textarea:focus,
 input:focus {
   outline: none;
-  border: 1px solid #3486eb;
+  border: 1px solid black;
 }
 
 textarea,
@@ -77,10 +78,12 @@ select {
 textarea:focus,
 select:focus {
   outline: none;
-  border: 1px solid #3486eb;
+  border: 1px solid black;
 }
 
 textarea {
+  background-color: lightgray;
+  border-color: 1px solid black;
   min-width: 40%;
   min-height: 100px;
 }
@@ -124,15 +127,16 @@ main {
 
 main h2 {
   text-align: center;
-  color: #33629b;
-  font-family: fantasy;
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 4px;
+  text-decoration: underline;
 }
 
 main a,
 ol,
 li {
-  color: #33629b;
-  font-family: fantasy;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .btn-no-style {
@@ -145,8 +149,8 @@ li {
   font-size: 100%;
   font-weight: bold;
   transition: color 0.1s;
-  margin-left: 16px;
-  font-family: fantasy;
+  margin-left: 8px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .btn-no-style:hover {
@@ -155,11 +159,12 @@ li {
 }
 
 .delete-review-btn {
-  background-color: #d41414;
+  background-color: white;
+  border-color: 1px solid black;
 }
 
 .delete-review-btn:hover {
-  background-color: #ff643d;
+  background-color: red;
 }
 
 .review {
@@ -178,11 +183,8 @@ li {
 }
 .article_style .meta a,
 .article_style .meta {
-  color: #4dbabb;
-  font-size: 14px;
-}
-.article_img {
-  width: -webkit-fill-available;
+  color: black;
+  font-size: 16px;
 }
 
 .article_p {
@@ -195,7 +197,7 @@ li {
   list-style-type: none;
 }
 .review .title span {
-  font-style: italic;
+  font-family: "Courier New", Courier, monospace;
   font-size: 90%;
   color: #7d7d7d;
 }
@@ -220,7 +222,7 @@ li {
 
 .reviews-title h2 {
   font-size: 30px;
-  font-family: fantasy;
+  font-family: "Courier New", Courier, monospace;
   color: black;
 }
 
@@ -237,18 +239,8 @@ li {
 
 .form-entry h3 {
   font-size: 30px;
-  font-family: fantasy;
-}
-
-.upvote-btn {
-  background-color: #619af5c9;
-  transition: background-color 0.1s;
-  color: black;
-}
-
-.upvote-btn:hover {
-  background-color: #76a8f9;
-  color: black;
+  text-decoration: underline;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .comment-form {
@@ -258,10 +250,11 @@ li {
 .comment {
   padding: 1%;
   margin-bottom: 1%;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .comment:nth-child(odd) {
-  background-color: #faf4c27b;
+  background-color: lightgray;
   border-radius: 8px;
 }
 
@@ -290,7 +283,7 @@ footer h3 {
   justify-content: center;
   padding: 2%;
   font-size: 100%;
-  font-family: fantasy;
+  font-family: "Courier New", Courier, monospace;
 }
 
 /* Dropdown */
